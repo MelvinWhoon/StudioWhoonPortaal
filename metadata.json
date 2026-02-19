@@ -1,0 +1,7 @@
+{
+  "name": "Client Portaal v1.007",
+  "description": "Professional multi-project customer portal with role-based access",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
