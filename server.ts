@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-// --- JOUW DATABASE CONFIGURATIE ---
+// --- JOUW DATABASE CONFIGURATIE ----
 const dbConfig = {
   host: "195.201.82.4",
   user: "Whoon",
