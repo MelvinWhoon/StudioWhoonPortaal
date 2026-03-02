@@ -7,9 +7,10 @@ import { UserRole } from '../types';
 
 interface LoginProps {
   onLogin: (email: string, password?: string) => void;
+  isLoggingIn?: boolean;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<LoginProps> = ({ onLogin, isLoggingIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { lang, setLang, t } = useTranslation();
@@ -84,9 +85,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </div>
             <button
               type="submit"
-              className="w-full py-5 bg-[#8C7864] hover:brightness-110 text-white font-black uppercase text-xs tracking-widest rounded-2xl transition-all shadow-xl shadow-[#8C7864]/20 active:scale-95"
+              disabled={isLoggingIn}
+              className={`w-full py-5 bg-[#8C7864] hover:brightness-110 text-white font-black uppercase text-xs tracking-widest rounded-2xl transition-all shadow-xl shadow-[#8C7864]/20 active:scale-95 flex items-center justify-center gap-2 ${isLoggingIn ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              {t('login_btn')}
+              {isLoggingIn ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  {t('loading')}...
+                </>
+              ) : t('login_btn')}
             </button>
           </form>
 
@@ -96,8 +103,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               {MOCK_USERS.map(u => (
                 <button
                   key={u.id}
-                  onClick={() => onLogin(u.email, 'Meubilex!')}
-                  className="px-6 py-3.5 text-left bg-slate-50 hover:bg-slate-100 rounded-2xl border border-slate-100 text-xs text-slate-600 transition-all flex items-center justify-between group"
+                  disabled={isLoggingIn}
+                  onClick={() => onLogin(u.email, u.password)}
+                  className="px-6 py-3.5 text-left bg-slate-50 hover:bg-slate-100 rounded-2xl border border-slate-100 text-xs text-slate-600 transition-all flex items-center justify-between group disabled:opacity-50"
                 >
                   <span className="flex items-center gap-2">
                     <span className="font-black text-slate-900 uppercase tracking-tight">{u.name.toUpperCase()}</span> 

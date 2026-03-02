@@ -71,6 +71,16 @@ const currentMonth = now.toISOString();
 
 export const MOCK_USERS = [
   { 
+    id: 'u-melvin', 
+    email: 'melvin@whoon.com', 
+    name: 'Melvin', 
+    role: UserRole.SUPER_ADMIN, 
+    isActive: true,
+    isPasswordSet: true,
+    password: 'Meubilex123!',
+    createdAt: currentMonth
+  },
+  { 
     id: 'u1', 
     email: 'admin@portaalpro.nl', 
     name: 'Demi-Claire', 

@@ -328,7 +328,7 @@ const SuperAdminDashboard: React.FC = () => {
   };
 
   const handleProjectPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
+    const files = Array.from(e.target.files || []) as File[];
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = () => {
@@ -342,7 +342,7 @@ const SuperAdminDashboard: React.FC = () => {
   };
 
   const handlePackagePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
+    const files = Array.from(e.target.files || []) as File[];
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = () => {

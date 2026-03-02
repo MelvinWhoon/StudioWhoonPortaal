@@ -102,29 +102,42 @@ const App: React.FC = () => {
     init();
   }, []);
 
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
   const login = async (email: string, password?: string) => {
-    const users = await dataService.getUsers();
-    const found = users.find(u => u.email === email);
-    if (found) {
-      if (found.password && found.password !== password) {
-        alert('Onjuist wachtwoord.');
-        return;
-      }
-      setUser(found);
-      const projects = await dataService.getProjects();
-      if (found.role === UserRole.SUPER_ADMIN) {
-        setActiveView('Statistieken');
-      } else if (found.role === UserRole.PROJECT_ADMIN) {
-        setActiveView('Dashboard');
-        const p = projects.find(proj => proj.id === found.projectId);
-        setActiveProject(p || null);
+    setIsLoggingIn(true);
+    try {
+      console.log('Attempting login for:', email);
+      const users = await dataService.getUsers();
+      console.log('Users fetched:', users.length);
+      const found = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      
+      if (found) {
+        if (found.password && found.password !== password) {
+          alert('Onjuist wachtwoord.');
+          return;
+        }
+        setUser(found);
+        const projects = await dataService.getProjects();
+        if (found.role === UserRole.SUPER_ADMIN) {
+          setActiveView('Statistieken');
+        } else if (found.role === UserRole.PROJECT_ADMIN) {
+          setActiveView('Dashboard');
+          const p = projects.find(proj => proj.id === found.projectId);
+          setActiveProject(p || null);
+        } else {
+          setActiveView('Overzicht');
+          const p = projects.find(proj => proj.id === found.projectId);
+          setActiveProject(p || null);
+        }
       } else {
-        setActiveView('Overzicht');
-        const p = projects.find(proj => proj.id === found.projectId);
-        setActiveProject(p || null);
+        alert('Onbekend emailadres.');
       }
-    } else {
-      alert('Onbekend emailadres.');
+    } catch (error) {
+      console.error("Login error:", error);
+      alert('Er is een fout opgetreden bij het inloggen. Controleer uw verbinding.');
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -151,7 +164,7 @@ const App: React.FC = () => {
     <AuthContext.Provider value={{ user, login, logout, activeProject, setActiveProject, activeView, setActiveView, isSidebarOpen, setSidebarOpen }}>
       <TranslationContext.Provider value={{ t, lang, setLang }}>
         {!user ? (
-          <Login onLogin={login} />
+          <Login onLogin={login} isLoggingIn={isLoggingIn} />
         ) : (
           <div className="flex h-screen bg-[#edeae6] font-inter overflow-hidden relative">
             <div 
