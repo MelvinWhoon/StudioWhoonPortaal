@@ -1,4 +1,4 @@
--- Database Schema for Client Portal
+-- Database Schema for Client Portal 1
 -- Compatible with MariaDB / MySQL
 
 CREATE DATABASE IF NOT EXISTS client_portal;
