@@ -1,20 +1,83 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Studio Portaal Tool
 
-# Run and deploy your AI Studio app
+Overzicht
+Deze tool is een webapplicatie voor het beheren van communicatie, documenten en klantinformatie binnen één portaal. Het systeem is ontworpen om een centrale werkplek te creëren waar teams en klanten eenvoudig kunnen samenwerken.
 
-This contains everything you need to run your app locally.
+De applicatie combineert een moderne frontend met een API en database zodat berichten, documenten en notificaties realtime verwerkt kunnen worden.
 
-View your app in AI Studio: https://ai.studio/apps/89be974d-c745-4aa6-8224-1aea29210293
+Wat de tool doet
 
-## Run Locally
+De tool biedt één centrale omgeving voor projectcommunicatie en documentbeheer.
 
-**Prerequisites:**  Node.js
+Belangrijkste functies
 
+• Klantportaal voor communicatie
+• Berichtensysteem tussen klant en beheerder
+• Document upload en beheer
+• Automatische notificaties bij nieuwe berichten
+• Dashboard voor overzicht van projecten en klanten
+• API gebaseerde data verwerking
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Voor wie deze tool bedoeld is
+
+Deze applicatie is bedoeld voor bedrijven die met klanten samenwerken aan projecten en een overzichtelijk portaal nodig hebben voor communicatie en documentuitwisseling.
+
+Voorbeelden
+
+• interieur ontwerp projecten
+• consultancy trajecten
+• bouw of renovatie projecten
+• digitale projectbegeleiding
+
+Technische stack
+
+Frontend
+React
+TypeScript
+Vite
+Tailwind CSS
+
+Backend
+PHP API
+
+Database
+MySQL
+
+Hosting
+Geschikt voor standaard webhosting of VPS omgevingen.
+
+Project structuur
+
+projectnaam
+httpdocs
+index.html
+assets
+api.php
+
+De productieversie van de frontend wordt gegenereerd in een dist map en vervolgens geplaatst in de webroot van de server.
+
+Belangrijke eigenschappen
+
+• scheiding tussen frontend en backend
+• API gebaseerde communicatie
+• database gestuurde applicatie
+• uitbreidbaar voor meerdere modules
+• geschikt voor multi-user portals
+
+Gebruik
+
+1 Clone de repository
+2 Installeer dependencies
+3 Build de applicatie
+4 Upload de build naar de server
+5 Configureer database en API
+
+De applicatie werkt daarna via de gekoppelde backend en database.
+
+Doel van het project
+
+Het doel van dit project is een flexibel portaal te bieden dat eenvoudig kan worden aangepast voor verschillende soorten klantprojecten en interne workflows.
+
+Licentie
+
+Dit project kan vrij worden aangepast en uitgebreid voor eigen toepassingen.
